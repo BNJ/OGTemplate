@@ -1,0 +1,285 @@
+<div class="page-header">
+	<h1>OpenGraph Template</h1>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<form class="form">
+			<div class="panel panel-default">
+			<div class="panel-heading"><h3 class="panel-title">Required</h3></div>
+			<div class="panel-body">
+			<div class="form-group">
+				<label class="" for="title">Title</label>
+				<input name="title" ng-model="title" type="text" class="form-control" >
+			</div>
+			<div class="form-group">
+				<label for="type">Type</label>
+				<select name="type" ng-model="type" type="text" class="form-control" >
+					<optgroup label="Music">
+						<option value="music.song" data-options="duration,album,album:disc,album:track,musician">Song</option>
+						<option value="music.album" data-options="song,song:disc,song:track,musician,release_date">Album</option>
+						<option value="music.playlist" data-options="song,song:disc,song:track,creator">Playlist</option>
+						<option value="music.radio_station" data-options="creator">Radio Station</option>
+					</optgroup>
+					<optgroup label="Video">
+						<option value="video.movie" data-options="actor,actor:role,director,writer,duration,release_date,tag">Movie</option>
+						<option value="video.episode" data-options="actor,actor:role,director,writer,duration,release_date,tag,series">Episode</option>
+						<option value="video.other" data-options="">Other</option>
+					</optgroup>
+					<optgroup label="Content">
+						<option value="article" data-options="published_time,modified_time,expiration_time,author,section,tag">Article</option>
+						<option value="book" data-options="author,isbn,release_date,tag">Book</option>
+						<option value="profile" data-options="first_name,last_name,username,gender">Profile</option>
+						<option value="website" data-options="">Website</option>
+					</optgroup>
+				</select>
+			</div>
+			<div class="form-group clearfix">
+				<label class="" for="image">Image</label>
+				<input name="image" ng-model="image" type="url" class="form-control" >
+				<br><label>Image Dimensions</label>
+				<div class="row">
+				<div class="col-xs-5">
+				<input name="image_height" ng-model="image_height" type="number" class="form-control">
+				</div><div class="col-xs-1"><p class="form-control-static">&times;</p></div>
+				<div class="col-xs-5">
+				<input name="image_width" ng-model="image_width" type="number" class="form-control">
+				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="" for="url">URL</label>
+				<input name="url" ng-model="url" type="url" class="form-control" >
+			</div>
+			</div></div>
+
+			<div class="panel panel-default">
+			<div class="panel-heading"><h3 class="panel-title">Optional</h3></div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="" for="audio">Audio</label>
+					<input name="audio" ng-model="audio" type="url" class="form-control" >
+				</div>
+
+				<div class="form-group">
+					<label class="" for="description">Description</label>
+					<textarea name="description" ng-model="description" class="form-control" ></textarea>
+				</div>
+				<div class="form-group">
+					<label for="determiner">Determiner</label>
+					<select name="determiner" ng-model="determiner" class="form-control" >
+						<option value="">[none]</option>
+						<option value="auto">[auto]</option>
+						<option value="a">a</option>
+						<option value="an">an</option>
+						<option value="the">the</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label class="" for="locale">Locale</label>
+					<input name="locale" ng-model="locale" type="text" class="form-control" >
+				</div>
+				<div class="form-group">
+					<label class="" for="locale_alternate">Alternate Locale</label>
+					<input name="locale_alternate" ng-list ng-model="locale_alternate" type="text" class="form-control" >
+					<span class="help-block">Comma-separated list.</span>
+				</div>
+				<div class="form-group">
+					<label class="" for="site_name">Site Name</label>
+					<input name="site_name" ng-model="site_name" type="text" class="form-control" >
+				</div>
+				<div class="form-group">
+					<label class="" for="video">Video</label>
+					<input name="video" ng-model="video" type="url" class="form-control" >
+					<br><label>Video Dimensions</label>
+					<div class="row">
+					<div class="col-xs-5">
+					<input name="video_height" ng-model="video_height" type="number" class="form-control">
+					</div><div class="col-xs-1"><p class="form-control-static">&times;</p></div>
+					<div class="col-xs-5">
+					<input name="video_width" ng-model="video_width" type="number" class="form-control">
+					</div>
+					</div>
+					</div>
+
+			</div></div>
+			
+			<div class="panel panel-default" ng-hide="type == &quot;&quot; || type == &quot;video.other&quot; || type == &quot;website&quot;">
+			<div class="panel-heading"><h3 class="panel-title">Type-Specific</h3></div>
+			<div class="panel-body">
+				<!-- MUSIC OPTIONS -->
+				<div class="form-group" ng-show="type == &quot;music.song&quot;">
+					<label class="" for="music:duration">Duration</label>
+					<input name="music:duration" ng-model="music_duration" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;music.song&quot;">
+					<label class="" for="music:album">Album</label>
+					<input name="music:album" ng-model="music_album" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;music.song&quot;">
+					<label class="" for="music:album:disc">Disc</label>
+					<input name="music:album:disc" ng-model="music_album_disc" type="number" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;music.song&quot;">
+					<label class="" for="music:album:track">Track</label>
+					<input name="music:album:track" ng-model="music_album_track" type="number" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;music.song&quot; || type == &quot;music.album&quot;">
+					<label class="" for="music:musician">Musician</label>
+					<input name="music:musician" ng-model="music_musician" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;music.album&quot;">
+					<label for="music:release_date">Release Date</label>
+					<input name="music:release_date" ng-model="music_release_date" type="date" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;music.playlist&quot; || type == &quot;music.radio_station&quot;">
+					<label for="music:creator" class="">Creator</label>
+					<input name="music:creator" ng-model="music_creator" type="text" class="form-control" >
+				</div>
+
+				<!-- VIDEO OPTIONS -->
+				<div class="form-group" ng-show="type == &quot;video.movie&quot; || type == &quot;video.episode&quot;">
+					<label for="video:actor" class="">Actor</label>
+					<input name="video:actor" ng-model="video_actor" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;video.movie&quot; || type == &quot;video.episode&quot;">
+					<label for="video:actor:role" class="">Role</label>
+					<input name="video:actor:role" ng-model="video_actor_role" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;video.movie&quot; || type == &quot;video.episode&quot;">
+					<label for="video:director" class="">Director</label>
+					<input name="video:director" ng-model="video_director" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;video.movie&quot; || type == &quot;video.episode&quot;">
+					<label for="video:writer" class="">Writer</label>
+					<input name="video:writer" ng-model="video_writer" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;video.movie&quot; || type == &quot;video.episode&quot;">
+					<label for="video:release_date">Release Date</label>
+					<input name="video:release_date" ng-model="video_release_date" type="date" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;video.movie&quot; || type == &quot;video.episode&quot;">
+					<label for="video:tag" class="">Tags</label>
+					<input ng-list name="video:tag" ng-model="video_tag" type="text" class="form-control" >
+					<span class="help-block">Comma-separated list.</span>
+				</div>
+				<div class="form-group" ng-show="type == &quot;video.episode&quot;">
+					<label for="video:series" class="">Series</label>
+					<input name="video:series" ng-model="video_series" type="text" class="form-control" >
+				</div>
+
+				<!-- CONTENT OPTIONS -->
+				<div class="form-group" ng-show="type == &quot;article&quot;">
+					<label for="article:published_time" >Published Date</label>
+					<input name="article:published_time" ng-model="article_published_time" type="dateTimeLocal" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;article&quot;">
+					<label for="article:modified_time" >Modified Date</label>
+					<input name="article:modified_time" ng-model="article_modified_time" type="dateTimeLocal" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;article&quot;">
+					<label for="article:expiration_time" >Expiration Date</label>
+					<input name="article:expiration_time" ng-model="article_expiration_time" type="dateTimeLocal" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;article&quot;">
+					<label for="article:author" class="">Author</label>
+					<input name="article:author" ng-model="article_author" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;article&quot;">
+					<label for="article:section" class="">Section</label>
+					<input name="article:section" ng-model="article_section" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;article&quot;">
+					<label for="article:tag" class="">Tags</label>
+					<input ng-list name="article:tag" ng-model="article_tag" type="text" class="form-control" >
+					<span class="help-block">Comma-separated list.</span>
+				</div>
+				<div class="form-group" ng-show="type == &quot;book&quot;">
+					<label for="book:author" class="">Author</label>
+					<input name="book:author" ng-model="book_author" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;book&quot;">
+					<label for="book:isbn" class="">ISBN</label>
+					<input name="book:isbn" ng-model="book_isbn" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;book&quot;">
+					<label for="book:tag" class="">Tags</label>
+					<input ng-list name="book:tag" ng-model="book_tag" type="text" class="form-control" >
+					<span class="help-block">Comma-separated list.</span>
+				</div>
+				<div class="form-group" ng-show="type == &quot;book&quot;">
+					<label for="book:release_date" >Release Date</label>
+					<input name="book:release_date" ng-model="book_release_date" type="date" class="form-control" >
+				</div>
+
+				<div class="form-group" ng-show="type == &quot;profile&quot;">
+					<label for="profile:first_name" class="">First Name</label>
+					<input name="profile:first_name" ng-model="profile_first_name" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;profile&quot;">
+					<label for="profile:last_name" class="">Last Name</label>
+					<input name="profile:last_name" ng-model="profile_last_name" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;profile&quot;">
+					<label for="profile:username" class="">User Name</label>
+					<input name="profile:username" ng-model="profile_username" type="text" class="form-control" >
+				</div>
+				<div class="form-group" ng-show="type == &quot;profile&quot;">
+					<label for="profile:gender">Gender</label>
+					<select name="profile:gender" ng-model="profile_gender" class="form-control" >
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+					</select>
+				</div>
+			</div></div>
+		</form>
+	</div>
+	<div class="col-md-6">
+<code>
+&lt;title&gt;{{ title }}&lt;/title&gt;<br>
+&lt;meta property="og:title" content="{{ title | escape }}" /&gt;<br>
+&lt;meta property="og:type" content="{{ type | escape }}" /&gt;<br>
+&lt;meta property="og:url" content="{{ url | escape }}" /&gt;<br>
+&lt;meta property="og:image" content="{{ image | escape }}" /&gt;<br>
+<span ng-show="image_width">&lt;meta property="og:image:width" content="{{ image_width }}" /&gt;<br></span>
+<span ng-show="image_height">&lt;meta property="og:image:height" content="{{ image_height }}" /&gt;<br></span>
+<span ng-show="video_width">&lt;meta property="og:video:width" content="{{ video_width }}" /&gt;<br></span>
+<span ng-show="video_height">&lt;meta property="og:video:height" content="{{ video_height }}" /&gt;<br></span>
+<span ng-show="audio">&lt;meta property="og:audio" content="{{ audio | escape }}" /&gt;<br></span>
+<span ng-show="description">&lt;meta property="og:description" content="{{ description | escape }}" /&gt;<br>
+&lt;meta name="description" content="{{ description | escape }}" /&gt;<br></span>
+<span ng-show="determiner">&lt;meta property="og:determiner" content="{{ determiner | escape }}" /&gt;<br></span>
+<span ng-show="locale">&lt;meta property="og:locale" content="{{ locale | escape }}" /&gt;<br></span>
+<span ng-repeat="la in locale_alternate">&lt;meta property="og:locale:alternate" content="{{ la | escape }}" /&gt;<br></span>
+<span ng-show="site_name">&lt;meta property="og:site_name" content="{{ site_name | escape }}" /&gt;<br></span>
+<span ng-show="video">&lt;meta property="og:video" content="{{ video | escape }}" /&gt;<br></span>
+<span ng-show="music_duration">&lt;meta property="og:music:duration" content="{{ music_duration | escape }}" /&gt;<br></span>
+<span ng-show="music_album">&lt;meta property="og:music:album" content="{{ music_album | escape }}" /&gt;<br></span>
+<span ng-show="music_album_disc">&lt;meta property="og:music:album:disc" content="{{ music_album_disc | escape }}" /&gt;<br></span>
+<span ng-show="music_album_track">&lt;meta property="og:music:album:track" content="{{ music_album_track }}" /&gt;<br></span>
+<span ng-show="music_musician">&lt;meta property="og:music:musician" content="{{ music_musician | escape }}" /&gt;<br></span>
+<span ng-show="music_release_date">&lt;meta property="og:music:release_date" content="{{ music_release_date }}" /&gt;<br></span>
+<span ng-show="music_creator">&lt;meta property="og:music:creator" content="{{ music_creator | escape }}" /&gt;<br></span>
+<span ng-show="video_actor">&lt;meta property="og:video:actor" content="{{ video_actor | escape }}" /&gt;<br></span>
+<span ng-show="video_actor_role">&lt;meta property="og:video:actor:role" content="{{ video_actor_role | escape }}" /&gt;<br></span>
+<span ng-show="video_director">&lt;meta property="og:video:director" content="{{ video_director | escape }}" /&gt;<br></span>
+<span ng-show="video_writer">&lt;meta property="og:video:writer" content="{{ video_writer | escape }}" /&gt;<br></span>
+<span ng-show="video_release_date">&lt;meta property="og:video:release_date" content="{{ video_release_date }}" /&gt;<br></span>
+<span ng-repeat="tag in video_tag">&lt;meta property="og:video:tag" content="{{ tag | escape }}" /&gt;<br></span>
+<span ng-show="video_series">&lt;meta property="og:video:series" content="{{ video_series | escape }}" /&gt;<br></span>
+<span ng-show="article_published_time">&lt;meta property="og:article:published_time" content="{{ article_published_time | escape }}" /&gt;<br></span>
+<span ng-show="article_modified_time">&lt;meta property="og:article:modified_time" content="{{ article_modified_time | escape }}" /&gt;<br></span>
+<span ng-show="article_expiration_time">&lt;meta property="og:article:expiration_time" content="{{ article_expiration_time | escape }}" /&gt;<br></span>
+<span ng-show="article_author">&lt;meta property="og:article:author" content="{{ article_author | escape }}" /&gt;<br></span>
+<span ng-show="article_section">&lt;meta property="og:article:section" content="{{ article_section | escape }}" /&gt;<br></span>
+<span ng-repeat="tag in article_tag">&lt;meta property="og:article:tag" content="{{ tag | escape }}" /&gt;<br></span>
+<span ng-show="book_author">&lt;meta property="og:book:author" content="{{ book_author | escape }}" /&gt;<br></span>
+<span ng-show="book_isbn">&lt;meta property="og:book:isbn" content="{{ book_isbn | escape }}" /&gt;<br></span>
+<span ng-repeat="tag in book_tag">&lt;meta property="og:book:tag" content="{{ tag | escape }}" /&gt;<br></span>
+<span ng-show="profile_first_name">&lt;meta property="og:profile:first_name" content="{{ profile_first_name | escape }}" /&gt;<br></span>
+<span ng-show="profile_last_name">&lt;meta property="og:profile:last_name" content="{{ profile_last_name | escape }}" /&gt;<br></span>
+<span ng-show="profile_username">&lt;meta property="og:profile:username" content="{{ profile_username | escape }}" /&gt;<br></span>
+<span ng-show="profile_gender">&lt;meta property="og:profile:gender" content="{{ profile_gender | escape }}" /&gt;<br></span>
+
+		</code>
+	</div>
+</div>
